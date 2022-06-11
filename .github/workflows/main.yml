@@ -1,4 +1,4 @@
-name: Laravel
+name: Deploy in Production
 
 on:
   push:
@@ -32,4 +32,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/sail artisan test --coverage --min=90
+      run: php artisan test --coverage --min=90
