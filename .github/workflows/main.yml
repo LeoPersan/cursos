@@ -37,6 +37,10 @@ jobs:
   laravel-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Que caraio
+        run: echo '${{ secrets.LEOPERSAN_HOST }}'
+      - name: Que caraio2
+        run: echo ${{ secrets.LEOPERSAN_HOST }}
       - name: Set private key
         uses: MrSquaare/ssh-setup-action@v1.0.1
         with:
