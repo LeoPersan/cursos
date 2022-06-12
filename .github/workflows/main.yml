@@ -32,4 +32,24 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: php artisan test --coverage --min=90
+      run: php artisan test --coverage --min=90 
+
+  laravel-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set private key
+        uses: MrSquaare/ssh-setup-action@v1.0.1
+        with:
+          host: leopersan.com.br
+          private-key: ${{ secrets.LEOPERSAN_PRIVATE_KEY }}
+      - name: Deploy
+        run: ssh root@leopersan.com.br 'bash -se' << EOF_SSH
+              cd /var/www/cursos
+              git pull origin master
+              composer install -q
+              chown -R www-data:www-data .
+              php artisan migrate
+              php artisan optimize
+              EOF_SSH
+
+  
