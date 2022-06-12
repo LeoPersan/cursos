@@ -49,7 +49,7 @@ jobs:
       - name: Deploy
         run: ssh root@leopersan.com.br 'bash -se' << EOF_SSH
               cd /var/www/cursos
-              git pull origin master
+              git pull origin main
               composer install -q
               chown -R www-data:www-data .
               php artisan migrate
