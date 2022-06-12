@@ -40,7 +40,7 @@ jobs:
       - name: Set private key
         uses: MrSquaare/ssh-setup-action@v1.0.1
         with:
-          host: leopersan.com.br
+          host: ${{ secrets.LEOPERSAN_HOST }}
           private-key: ${{ secrets.LEOPERSAN_PRIVATE_KEY }}
       - name: Deploy
         run: ssh root@leopersan.com.br 'bash -se' << EOF_SSH
