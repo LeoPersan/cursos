@@ -50,7 +50,7 @@ jobs:
           git pull origin main
           composer install -q
           chown -R www-data:www-data .
-          php artisan migrate
+          php artisan migrate --force
           php artisan optimize
           EOF_SSH
 
